@@ -1,0 +1,28 @@
+{
+    "name": "lea/is-learning-phpunit",
+    "description": "Learning PHP Unit",
+    "type": "project",
+    "authors": [
+        {
+            "name": "rdss-lreimann",
+            "email": "lea.reimann@rewe-digital.com"
+        }
+    ],
+    "require": {
+      "ext-readline": "*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Lea\\PHPUnit\\": "/src/",
+	    "Lea\\PHPUnit\\Test\\": "/test/"
+        }
+    },
+
+    "require-dev": {
+        "php-http/curl-client": "^1.1",
+	"zooroyal/coding-standard": "dev-CICD-181",
+        "phpunit/phpunit": "^7.0 || ^8.4",
+        "mockery/mockery": "^1.2"
+    }
+}

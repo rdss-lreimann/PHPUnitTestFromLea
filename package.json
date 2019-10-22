@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@composer-asset/zooroyal--coding-standard": "file:./vendor/foxy/composer-asset/zooroyal/coding-standard"
+    }
+}
