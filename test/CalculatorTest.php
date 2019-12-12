@@ -1,20 +1,21 @@
 <?php
 
-namespace Lea\PHPUnit\Test;
+namespace Lea\PHPUnit\Arithmetician\Test;
 
 use InvalidArgumentException;
-use Lea\PHPUnit\Calculator;
+use Lea\PHPUnit\Arithmetician\Calculator;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase
 {
 
-    /**
-     * @var Calculator
-     */
+    /** @var Calculator $subject */
     private $subject;
+    /** @var int $firstNumber */
     private $firstNumber;
+    /** @var int $secondNumber */
     private $secondNumber;
+    /** @var int $numberZero */
     private $numberZero;
 
     protected function setUp(): void
@@ -27,213 +28,208 @@ class CalculatorTest extends TestCase
 
     /**
      * equivalence class for addition
-     *
      * natural Numbers
-     *
-     * 1. int, int
-     * 2. int, -int
-     * 3. -int, int
-     * 4. -int, -int
-     */
-
-    /**
+     * int, int
      * @test
      */
-    public function proofTheFirstOutputFromMethodAddition()
+    public function firstOutputFromMethodAdd()
     {
-        $result = $this->subject->addition($this->firstNumber, $this->secondNumber);
+        $result = $this->subject->add($this->firstNumber, $this->secondNumber);
         self::assertSame(15, $result);
     }
 
     /**
+     * equivalence class for addition
+     * natural Numbers
+     * int, -int
      * @test
      */
-    public function proofTheSecondOutputFromMethodAddition()
+    public function secondOutputFromMethodAdd()
     {
-        $result = $this->subject->addition($this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->add($this->firstNumber, -$this->secondNumber);
         self::assertSame(5, $result);
     }
 
     /**
+     * equivalence class for addition
+     * natural Numbers
+     * -int, int
      * @test
      */
-    public function proofTheThirdOutputFromMethodAddition()
+    public function thirdOutputFromMethodAdd()
     {
-        $result = $this->subject->addition(- $this->firstNumber, $this->secondNumber);
+        $result = $this->subject->add(-$this->firstNumber, $this->secondNumber);
         self::assertSame(-5, $result);
     }
 
     /**
+     * equivalence class for addition
+     * natural Numbers
+     * -int, -int
      * @test
      */
-    public function proofTheFourthOutputFromMethodAddition()
+    public function fourthOutputFromMethodAdd()
     {
-        $result = $this->subject->addition(- $this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->add(-$this->firstNumber, -$this->secondNumber);
         self::assertSame(-15, $result);
     }
-
 
     /**
      * equivalence class for subtraction
-     *
      * natural Numbers
-     *
-     * 1. int, int
-     * 2. int, -int
-     * 3. -int, int
-     * 4. -int, -int
-     */
-
-    /**
+     * int, int
      * @test
      */
-    public function proofTheFirstOutputFromMethodSubtraction()
+    public function firstOutputFromMethodSubtract()
     {
-        $result = $this->subject->subtraction($this->firstNumber, $this->secondNumber);
+        $result = $this->subject->subtract($this->firstNumber, $this->secondNumber);
         self::assertSame(5, $result);
     }
 
     /**
+     * equivalence class for subtraction
+     * natural Numbers
+     * int, -int
      * @test
      */
-    public function proofTheSecondOutputFromMethodSubtraction()
+    public function secondOutputFromMethodSubtract()
     {
-        $result = $this->subject->subtraction($this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->subtract($this->firstNumber, -$this->secondNumber);
         self::assertSame(15, $result);
     }
 
     /**
+     * equivalence class for subtraction
+     * natural Numbers
+     * - int, int
      * @test
      */
-    public function proofTheThirdOutputFromMethodSubtraction()
+    public function thirdOutputFromMethodSubtract()
     {
-        $result = $this->subject->subtraction(- $this->firstNumber, $this->secondNumber);
+        $result = $this->subject->subtract(-$this->firstNumber, $this->secondNumber);
         self::assertSame(-15, $result);
     }
 
     /**
+     * equivalence class for subtraction
+     * natural Numbers
+     * - int, - int
      * @test
      */
-    public function proofTheFourthOutputFromMethodSubtraction()
+    public function fourthOutputFromMethodSubtract()
     {
-        $result = $this->subject->subtraction(- $this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->subtract(-$this->firstNumber, -$this->secondNumber);
         self::assertSame(-5, $result);
     }
 
-
-
-
-
-
-
     /**
      * equivalence class for multiply
-     *
      * natural Numbers
-     *
-     * 1. int, int
-     * 2. int, -int
-     * 3. -int, int
-     * 4. -int, -int
-     */
-
-
-    /**
+     * int, int
      * @test
      */
-    public function proofTheFirstOutputFromMethodMultiply()
+    public function firstOutputFromMethodMultiply()
     {
         $result = $this->subject->multiply($this->firstNumber, $this->secondNumber);
         self::assertSame(50, $result);
     }
 
     /**
+     * equivalence class for multiply
+     * natural Numbers
+     * int, -int
      * @test
      */
-    public function proofTheSecondOutputFromMethodMultiply()
+    public function secondOutputFromMethodMultiply()
     {
-        $result = $this->subject->multiply($this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->multiply($this->firstNumber, -$this->secondNumber);
         self::assertSame(-50, $result);
     }
 
     /**
+     * equivalence class for multiply
+     * natural Numbers
+     * -int, int
      * @test
      */
-    public function proofTheThirdOutputFromMethodMultiply()
+    public function thirdOutputFromMethodMultiply()
     {
-        $result = $this->subject->multiply(- $this->firstNumber, $this->secondNumber);
+        $result = $this->subject->multiply(-$this->firstNumber, $this->secondNumber);
         self::assertSame(-50, $result);
     }
 
     /**
+     * equivalence class for multiply
+     * natural Numbers
+     * -int, -int
      * @test
      */
-    public function proofTheFourthOutputFromMethodMultiply()
+    public function fourthOutputFromMethodMultiply()
     {
-        $result = $this->subject->multiply(- $this->firstNumber, - $this->secondNumber);
+        $result = $this->subject->multiply(-$this->firstNumber, -$this->secondNumber);
         self::assertSame(50, $result);
+    }
+
+    /**
+     * equivalence class for division
+     * natural Numbers
+     * int, int
+     * @test
+     */
+    public function firstOutputFromMethodDivide()
+    {
+        $result = $this->subject->divide($this->firstNumber, $this->secondNumber);
+        self::assertSame(2, $result);
+    }
+
+    /**
+     * equivalence class for division
+     * natural Numbers
+     * int, -int
+     * @test
+     */
+    public function secondOutputFromMethodDivide()
+    {
+        $result = $this->subject->divide($this->firstNumber, -$this->secondNumber);
+        self::assertSame(-2, $result);
+    }
+
+    /**
+     * equivalence class for division
+     * natural Numbers
+     * -int, int
+     * @test
+     */
+    public function thirdOutputFromMethodDivide()
+    {
+        $result = $this->subject->divide(-$this->firstNumber, $this->secondNumber);
+        self::assertSame(-2, $result);
     }
 
 
     /**
      * equivalence class for division
-     *
      * natural Numbers
-     *
-     * 1. int, int
-     * 2. int, -int
-     * 3. -int, int
-     * 4. -int, -int
-     * 5. int, 0
-     */
-
-
-    /**
+     * -int, -int
      * @test
      */
-    public function proofTheFirstOutputFromMethodDivision()
+    public function fourthOutputFromMethodDivide()
     {
-        $result = $this->subject->division($this->firstNumber, $this->secondNumber);
+        $result = $this->subject->divide(-$this->firstNumber, -$this->secondNumber);
         self::assertSame(2, $result);
     }
 
     /**
+     * equivalence class for division
+     * natural Numbers
+     * int, 0
      * @test
      */
-    public function proofTheSecondOutputFromMethodDivision()
+    public function divisionByNullIsNotAllowed()
     {
-        $result = $this->subject->division($this->firstNumber, - $this->secondNumber);
-        self::assertSame(-2, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function proofTheThirdOutputFromMethodDivision()
-    {
-        $result = $this->subject->division(- $this->firstNumber, $this->secondNumber);
-        self::assertSame(-2, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function proofTheFourthOutputFromMethodDivision()
-    {
-        $result = $this->subject->division(- $this->firstNumber, - $this->secondNumber);
-        self::assertSame(2, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function proofTheFifthOutputFromMethodDivision()
-    {
-
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessage('zero is not allowed');
         self::expectExceptionCode(1571046500);
-        $result = $this->subject->division($this->firstNumber, $this->numberZero);
+        $result = $this->subject->divide($this->firstNumber, $this->numberZero);
     }
-
 }

@@ -19,5 +19,4 @@ $operator = readline('Give me the operator with which you want to calculate:');
 
 $execute->run($firstNumber, $secondNumber, $operator);
 
-
 // @codeCoverageIgnoreEnd

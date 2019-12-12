@@ -2,46 +2,61 @@
 
 namespace Lea\PHPUnit\Arithmetician\Test;
 
-use Lea\PHPUnit\Arithmetician\Execute;
 use Lea\PHPUnit\Arithmetician\BusinessLogic;
+use Lea\PHPUnit\Arithmetician\Execute;
 use Mockery;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 
 class ExecuteTest extends TestCase
 {
-    private $execute;
+    /** @var Execute $subject */
+    private $subject;
+    /** @var BusinessLogic|MockInterface $mockedBusinessLogic */
     private $mockedBusinessLogic;
 
     protected function setUp(): void
     {
         $this->mockedBusinessLogic = Mockery::mock(BusinessLogic::class);
-        $this->execute = new Execute($this->mockedBusinessLogic);
+        $this->subject = new Execute($this->mockedBusinessLogic);
     }
 
     /**
      * @test
      */
-    public function proofIfTheClassExist()
+    public function classExist()
     {
-        self::assertInstanceOf(Execute::class, $this->execute);
+        self::assertInstanceOf(Execute::class, $this->subject);
     }
 
     /**
      * @test
      */
-    public function proofIfTheFunctionExist()
-    {
-        $this->mockedBusinessLogic->shouldReceive('calculateValue')->once()->with(12, 12, '+')->andReturn(24);
-        self::assertNotFalse($this->execute->calculateAll(12,12,'+'));
-    }
-
-
-    /**
-     * @test
-     */
-    public function proofIfTheOutputIsNumeric()
+    public function calculateAllExist()
     {
         $this->mockedBusinessLogic->shouldReceive('calculateValue')->once()->with(12, 12, '+')->andReturn(24);
-        self::assertIsNumeric($this->execute->calculateAll(12, 12, '+'));
+        $result = $this->subject->calculateAll(12, 12, '+');
+        self::assertNotFalse($result);
+
+    }
+
+    /**
+     * @test
+     */
+    public function runExist()
+    {
+        $this->mockedBusinessLogic->shouldReceive('calculateValue')->once()->with(12, 12, '+')->andReturn(24);
+        $result = $this->subject->run(12, 12, '+');
+        self::assertNotFalse($result);
+    }
+
+    /**
+     * @test
+     */
+    public function outputIsNumeric()
+    {
+        $this->mockedBusinessLogic->shouldReceive('calculateValue')->once()->with(12, 12, '+')->andReturn(24);
+        $result = $this->subject->calculateAll(12, 12, '+');
+        self::assertIsNumeric($result);
     }
 }
